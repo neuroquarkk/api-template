@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { AuthController } from './controller';
-import { validate } from '../../src/middlewares';
+import { auth, validate } from '../../src/middlewares';
 import { authBodySchema } from './schema';
 
 export const authRouter = Router();
@@ -15,3 +15,5 @@ authRouter
 
 authRouter.route('/refresh').post(AuthController.refresh);
 authRouter.route('/logout').post(AuthController.logout);
+
+authRouter.route('/delete').delete(auth(), AuthController.delete);
