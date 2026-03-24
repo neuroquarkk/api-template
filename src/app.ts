@@ -1,16 +1,22 @@
-export enum HttpStatusCode {
-    OK = 200,
-    CREATED = 201,
-    NO_CONTENT = 204,
+import express from 'express';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import { config } from './config';
+import cookieParser from 'cookie-parser';
+import { authRouter } from '../api';
 
-    BAD_REQUEST = 400,
-    UNAUTHORIZED = 401,
-    FORBIDDEN = 403,
-    NOT_FOUND = 404,
-    CONFLICT = 409,
-    GONE = 410,
-    UNPROCESSABLE_ENTITY = 422,
-    TOO_MANY_REQUESTS = 429,
+const app = express();
 
-    INTERNAL_SERVER_ERROR = 500,
-}
+app.use(helmet());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan(config.MorganFormat));
+app.use(cookieParser());
+
+app.get('/', (_req, res) => {
+    return res.send('Hello from the server');
+});
+
+app.use('/api/v1/auth', authRouter);
+
+export default app;
