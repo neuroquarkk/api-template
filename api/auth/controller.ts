@@ -1,9 +1,9 @@
 import type { CookieOptions } from 'express';
-import { config } from '../../src/config';
-import { HttpStatusCode } from '../../src/constants';
-import { prisma } from '../../src/db';
-import type { TypedController } from '../../src/types';
-import { ApiError, ApiResponse, parseDuration, JWT } from '../../src/utils';
+import { config } from '@config';
+import { HttpStatusCode } from '@constants';
+import { prisma } from '@db';
+import type { TypedController } from '@types';
+import { ApiError, ApiResponse, parseDuration, JWT } from '@utils';
 import type { AuthBody } from './schema';
 import { createId } from '@paralleldrive/cuid2';
 

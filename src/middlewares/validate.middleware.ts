@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from 'express';
 import { ZodError, type ZodType } from 'zod';
-import { ApiError } from '../utils';
-import { HttpStatusCode } from '../constants';
+import { ApiError } from '@utils';
+import { HttpStatusCode } from '@constants';
 
 type ReqPart = 'body' | 'query' | 'params';
 

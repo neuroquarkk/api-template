@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
-import { ApiError } from '../utils';
-import { HttpStatusCode } from '../constants';
+import { ApiError } from '@utils';
+import { HttpStatusCode } from '@constants';
 
 export function errorHandler(
     err: Error,

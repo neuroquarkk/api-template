@@ -1,7 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
-import { ApiError } from '../utils';
-import { HttpStatusCode } from '../constants';
-import { JWT } from '../utils/jwt';
+import { ApiError, JWT } from '@utils';
+import { HttpStatusCode } from '@constants';
 
 export function auth() {
     return async function (req: Request, _res: Response, next: NextFunction) {
