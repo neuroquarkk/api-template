@@ -3,7 +3,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import { config } from '@config';
 import cookieParser from 'cookie-parser';
-import { authRouter } from '@api';
+import { errorHandler } from '@middlewares';
 
 const app = express();
 
@@ -17,6 +17,5 @@ app.get('/', (_req, res) => {
     return res.send('Hello from the server');
 });
 
-app.use('/api/v1/auth', authRouter);
-
+app.use(errorHandler);
 export default app;

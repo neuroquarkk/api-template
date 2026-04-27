@@ -5,16 +5,9 @@ import { HttpStatusCode } from '@constants';
 export function auth() {
     return async function (req: Request, _res: Response, next: NextFunction) {
         try {
-            let token: string | undefined;
-
-            const authHeader = req.headers.authorization;
-            if (authHeader && authHeader.startsWith('Bearer ')) {
-                token = authHeader.split(' ')[1];
-            }
-
-            if (!token && req.cookies?.['accessToken']) {
-                token = req.cookies['accessToken'];
-            }
+            const token =
+                req.headers.authorization?.split(' ')[1] ||
+                req.cookies?.['accessToken'];
 
             if (!token) {
                 throw new ApiError(

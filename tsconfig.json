@@ -29,7 +29,7 @@
             "@db": ["src/db/index"],
             "@constants": ["src/constants/index"],
             "@types": ["src/types/index"],
-            "@api": ["api/index"]
+            "@modules": ["modules/index"]
         }
     }
 }

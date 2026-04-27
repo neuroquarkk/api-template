@@ -6,27 +6,3 @@ generator client {
 datasource db {
     provider = "postgresql"
 }
-
-model User {
-    id        String   @id @default(cuid())
-    email     String   @unique
-    password  String
-    createdAt DateTime @default(now()) @map("created_at")
-    updatedAt DateTime @updatedAt @map("updated_at")
-
-    sessions Session[]
-
-    @@map("users")
-}
-
-model Session {
-    id        String   @id
-    userId    String   @map("user_id")
-    token     String   @unique
-    expiresAt DateTime @map("expires_at")
-    createdAt DateTime @default(now()) @map("created_at")
-
-    user User @relation(references: [id], fields: [userId], onDelete: Cascade)
-
-    @@map("sessions")
-}
